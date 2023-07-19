@@ -1,0 +1,29 @@
+.main__btn {
+  font-size: 14px;
+  padding: 10px 20px 10px 20px;
+  font-weight: 500;
+  border: none;
+  border-radius: 20px !important;
+  letter-spacing: 1px;
+
+  background: hsla(137, 46%, 64%, 1);
+
+  background: linear-gradient(
+    45deg,
+    hsla(137, 46%, 64%, 1) 0%,
+    hsla(182, 28%, 49%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    45deg,
+    hsla(137, 46%, 64%, 1) 0%,
+    hsla(182, 28%, 49%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    45deg hsla(137, 46%, 64%, 1) 0%,
+    hsla(182, 28%, 49%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#77CD90", endColorstr="#599D9F", GradientType=1 );
+}
