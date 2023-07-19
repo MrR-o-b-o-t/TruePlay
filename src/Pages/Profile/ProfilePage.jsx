@@ -1,10 +1,15 @@
 import { useState } from "react";
-import { Card, Button, Alert, Form, Container } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
+import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
 
 import "./ProfilePage.css";
 
 const ProfilePage = () => {
   const [userEmailVerified, setUserEmailVerified] = useState(false);
+  const [show, setShow] = useState(true);
   const handleVerifyEmail = () => {
     if (!userEmailVerified) {
       setUserEmailVerified(true);
@@ -20,7 +25,14 @@ const ProfilePage = () => {
           <h3 className="mb-4">Account</h3>
           <Card.Text>
             {!userEmailVerified ? (
-              <Alert variant="danger">Your email has not been verified</Alert>
+              <Alert
+                className="email__alert"
+                variant="danger"
+                onClose={() => setShow(false)}
+                dismissible
+              >
+                Your email has not been verified
+              </Alert>
             ) : (
               ""
             )}
@@ -37,14 +49,16 @@ const ProfilePage = () => {
             </Button>
           </Card.Text>
           <Form.Check
-            type="switch"
             id="newsletterSwitch"
             label="Send me Newsletters and Promotions"
           />
         </Card.Body>
-        <Card.Footer className="">
-          <small className="text-muted">Password</small>
-          <Button variant="link" className="text-decoration-none float-right">
+        <Card.Footer className="d-flex align-items-center">
+          <Card.Text className="">Password</Card.Text>
+          <Button
+            variant="link"
+            className="text-decoration-none float-right ml-auto"
+          >
             Change Password <i className="fas fa-pencil-alt"></i>
           </Button>
         </Card.Footer>
@@ -54,14 +68,14 @@ const ProfilePage = () => {
         <Card.Body>
           <h3 className="mb-3">Subscriptions</h3>
           <Card.Title>Current Plan</Card.Title>
-          <Card.Text>Annual</Card.Text>
+          <Card.Text className="text-muted">Annual</Card.Text>
           <Button variant="link" className="text-decoration-none float-right">
             Manage <i className="fas fa-arrow-right"></i>
           </Button>
         </Card.Body>
         <Card.Footer>
-          <small className="text-muted">Next Billing Date</small>
-          <Card.Text>June 3, 2023</Card.Text>
+          <Card.Text className="">Next Billing Date</Card.Text>
+          <Card.Text className="text-muted">June 3, 2023</Card.Text>
         </Card.Footer>
       </Card>
     </Container>

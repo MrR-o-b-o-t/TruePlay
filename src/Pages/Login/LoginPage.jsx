@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Form, Button, Container, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
@@ -57,9 +58,12 @@ const LoginPage = () => {
               required
             />
           </Form.Group>
-          <Button className="mt-3" variant="primary" type="submit">
+          <Button className="mt-3 main__btn" variant="primary" type="submit">
             Login
           </Button>
+          <Link to="/register">
+            <Button className="mt-3 mx-3 main__btn">Register</Button>
+          </Link>
         </Form>
       </Container>
     </Container>
