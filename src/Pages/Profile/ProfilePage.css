@@ -1,0 +1,60 @@
+.profile__cards {
+  background-color: #233b67;
+  color: white;
+}
+
+.main__btn {
+  font-size: 14px;
+  padding: 10px 20px 10px 20px;
+  font-weight: 500;
+  border: none;
+  border-radius: 20px !important;
+  letter-spacing: 1px;
+
+  background: hsla(137, 46%, 64%, 1);
+
+  background: linear-gradient(
+    45deg,
+    hsla(137, 46%, 64%, 1) 0%,
+    hsla(182, 28%, 49%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    45deg,
+    hsla(137, 46%, 64%, 1) 0%,
+    hsla(182, 28%, 49%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    45deg hsla(137, 46%, 64%, 1) 0%,
+    hsla(182, 28%, 49%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#77CD90", endColorstr="#599D9F", GradientType=1 );
+}
+
+.email__alert {
+  background-color: #b8414d;
+  color: white;
+  border: none;
+  padding-left: 3rem;
+}
+
+.email__alert button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5px !important;
+  border: 2px solid;
+  border-radius: 50%;
+  font-size: 12px;
+  margin: 15px;
+}
+
+.email__alert .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.text-muted {
+  color: #5e78a0 !important;
+}
