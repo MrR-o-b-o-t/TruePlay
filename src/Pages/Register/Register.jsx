@@ -11,6 +11,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [plan, setPlan] = useState("");
 
   const navigate = useNavigate();
 
@@ -24,6 +25,7 @@ const Register = () => {
       email,
       phoneNumber,
       password,
+      plan,
     };
     localStorage.setItem("user", JSON.stringify(userData));
     console.log(userData);
@@ -34,6 +36,7 @@ const Register = () => {
     setEmail("");
     setPhoneNumber("");
     setPassword("");
+    setPlan("");
 
     navigate("/login");
   };
@@ -43,6 +46,18 @@ const Register = () => {
       <h2 className="text-center mt-2">Register</h2>
       <Container className="register__container p-3 rounded mt-5">
         <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="plan">
+            <Form.Label>Plan:</Form.Label>
+            <Form.Select
+              value={plan}
+              onChange={(e) => setPlan(e.target.value)}
+              required
+            >
+              <option>Choose Plan</option>
+              <option value="Annual">Annual</option>
+              <option value="Monthly">Monthly</option>
+            </Form.Select>
+          </Form.Group>
           <Form.Group controlId="username">
             <Form.Label>User Name:</Form.Label>
             <Form.Control

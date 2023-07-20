@@ -33,8 +33,9 @@ const ProfilePage = () => {
   };
 
   const handleSubscriptionChange = (selectedPlan) => {
-    // Possibly initially set this at Register page?
-    // store in "user" object
+    localStorage.setItem("plan", selectedPlan);
+    const updateUserData = { ...userData, plan: selectedPlan };
+    localStorage.setItem("user", JSON.stringify(updateUserData));
     console.log("Selected Plan:", selectedPlan);
   };
 
@@ -103,7 +104,7 @@ const ProfilePage = () => {
         <Card.Body>
           <h3 className="mb-3">Subscriptions</h3>
           <Card.Title>Current Plan</Card.Title>
-          <Card.Text className="text-muted">Annual</Card.Text>
+          <Card.Text className="text-muted">{userData.plan}</Card.Text>
           <Button
             variant="link"
             className="text-decoration-none float-right"

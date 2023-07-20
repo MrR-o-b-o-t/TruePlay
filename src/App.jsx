@@ -8,8 +8,7 @@ import Register from "./Pages/Register/Register.jsx";
 import ProtectedRoute from "./Components/ProtectedRoutes/ProtectedRoutes.jsx";
 
 function App() {
-  const storedUserData = localStorage.getItem("user");
-  const userData = JSON.parse(storedUserData);
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
   return (
     <div className="App">
@@ -17,7 +16,7 @@ function App() {
         <Route
           path="/"
           element={
-            <ProtectedRoute userData={userData}>
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
               <ProfilePage />
             </ProtectedRoute>
           }
