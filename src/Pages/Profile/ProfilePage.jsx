@@ -13,7 +13,6 @@ const ProfilePage = () => {
   const [userEmailVerified, setUserEmailVerified] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
-  const [userChangePassword, setUserChangePassword] = "";
   const [show, setShow] = useState(true);
 
   const storedUserData = localStorage.getItem("user");
@@ -29,12 +28,6 @@ const ProfilePage = () => {
 
   const handleCloseAlert = () => {
     setShow(false);
-  };
-
-  const handleChangePassword = () => {
-    const storedUserData = localStorage.getItem("user");
-    const userData = JSON.parse(storedUserData);
-    localStorage.setItem(userData.Password, userChangePassword);
   };
 
   return (
@@ -83,13 +76,13 @@ const ProfilePage = () => {
           <Button
             variant="link"
             className="text-decoration-none float-right ml-auto"
+            onClick={openPasswordModal}
           >
             Change Password <i className="fas fa-pencil-alt"></i>
           </Button>
           <PasswordModal
             show={showPasswordModal}
             setShow={setShowPasswordModal}
-            handleChangePassword={handleChangePassword}
           />
         </Card.Footer>
       </Card>

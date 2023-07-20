@@ -1,30 +1,38 @@
-import Modal from 'react-bootstrap/Modal';
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button'; 
-import Form from 'react-bootstrap/Form';
+import Modal from "react-bootstrap/Modal";
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
-// import "./PasswordModal.css";
+import "./PasswordModal.css";
 
-const PasswordModal = ({ show, setShow, handleChangePassword }) => {
-  const [newPassword, setNewPassword] = useState('');
+const PasswordModal = ({ show, setShow, handleSubmitChangePassword }) => {
+  const [newPassword, setNewPassword] = useState("");
 
   const handleClose = () => {
     setShow(false);
   };
 
   const handleSubmitPasswordChange = () => {
+    const storedUserData = localStorage.getItem("user");
+    const userData = JSON.parse(storedUserData);
+    userData.password = newPassword;
+    localStorage.setItem("user", JSON.stringify(userData));
+    console.log(JSON.parse(localStorage.getItem("user")));
     setShow(false);
   };
 
   return (
-    <Modal className='password__modal' show={show} onHide={handleClose} animation={false}>
+    <Modal
+      className="password__modal"
+      show={show}
+      onHide={handleClose}
+      animation={false}
+    >
       <Modal.Header closeButton>
         <Modal.Title id="modal__title">Change Password</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p>
-          Enter a new password:
-        </p>
+        <p>Enter a new password:</p>
         <Form.Group controlId="newPassword">
           <Form.Control
             type="password"
