@@ -33,14 +33,17 @@ const PasswordModal = ({ show, setShow, handleSubmitChangePassword }) => {
       </Modal.Header>
       <Modal.Body>
         <p>Enter a new password:</p>
-        <Form.Group controlId="newPassword">
-          <Form.Control
-            type="password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            placeholder="New Password"
-          />
-        </Form.Group>
+        <Form>
+          <Form.Group controlId="newPassword">
+            <Form.Control
+              type="password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              placeholder="New Password"
+              autocomplete="on"
+            />
+          </Form.Group>
+        </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>

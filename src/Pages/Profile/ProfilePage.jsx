@@ -30,6 +30,14 @@ const ProfilePage = () => {
     setShow(false);
   };
 
+  if (!userData) {
+    return (
+      <>
+        <p>Please Login to view your profile.</p>
+      </>
+    );
+  }
+
   return (
     <Container>
       <h1 className="text-center mb-5">Settings</h1>
