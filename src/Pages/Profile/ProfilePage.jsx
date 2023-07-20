@@ -16,6 +16,9 @@ const ProfilePage = () => {
   const [userChangePassword, setUserChangePassword] = "";
   const [show, setShow] = useState(true);
 
+  const storedUserData = localStorage.getItem("user");
+  const userData = JSON.parse(storedUserData);
+
   const openModal = () => {
     setShowModal(true);
   };
@@ -58,7 +61,7 @@ const ProfilePage = () => {
           <Card.Text>
             <div className="d-flex justify-content-between align-items-start">
               <div>
-                Sample.email@gmail.com{" "}
+                {userData.email}{" "}
                 {!userEmailVerified ? (
                   <span className="text-danger">(Not Verified)</span>
                 ) : (
