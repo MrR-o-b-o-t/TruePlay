@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import MainModal from "../../Components/Modal/Modal";
 import PasswordModal from "../../Components/PasswordModal/PasswordModal";
+import SubscriptionModal from "../../Components/SubscriptionModal/SubscriptionModal";
 
 import "./ProfilePage.css";
 
@@ -14,6 +15,7 @@ const ProfilePage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [show, setShow] = useState(true);
+  const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
 
   const storedUserData = localStorage.getItem("user");
   const userData = JSON.parse(storedUserData);
@@ -28,6 +30,12 @@ const ProfilePage = () => {
 
   const handleCloseAlert = () => {
     setShow(false);
+  };
+
+  const handleSubscriptionChange = (selectedPlan) => {
+    // Possibly initially set this at Register page?
+    // store in "user" object
+    console.log("Selected Plan:", selectedPlan);
   };
 
   if (!userData) {
@@ -88,10 +96,6 @@ const ProfilePage = () => {
           >
             Change Password <i className="fas fa-pencil-alt"></i>
           </Button>
-          <PasswordModal
-            show={showPasswordModal}
-            setShow={setShowPasswordModal}
-          />
         </Card.Footer>
       </Card>
 
@@ -100,7 +104,11 @@ const ProfilePage = () => {
           <h3 className="mb-3">Subscriptions</h3>
           <Card.Title>Current Plan</Card.Title>
           <Card.Text className="text-muted">Annual</Card.Text>
-          <Button variant="link" className="text-decoration-none float-right">
+          <Button
+            variant="link"
+            className="text-decoration-none float-right"
+            onClick={() => setShowSubscriptionModal(true)}
+          >
             Manage <i className="fas fa-arrow-right"></i>
           </Button>
         </Card.Body>
@@ -116,6 +124,12 @@ const ProfilePage = () => {
         handleCloseAlert={handleCloseAlert}
         setUserEmailVerified={setUserEmailVerified}
       />
+      <SubscriptionModal
+        show={showSubscriptionModal}
+        setShow={setShowSubscriptionModal}
+        handleSubscriptionChange={handleSubscriptionChange}
+      />
+      <PasswordModal show={showPasswordModal} setShow={setShowPasswordModal} />
     </Container>
   );
 };
