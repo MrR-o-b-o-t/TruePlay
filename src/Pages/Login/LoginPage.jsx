@@ -13,6 +13,48 @@ const LoginPage = ({ setIsLoggedIn }) => {
 
   const navigate = useNavigate();
 
+  // const fakeLoginAPI = async (username, password) => {
+  //   try {
+  //     const apiUrl = "https://example.com/fake-login";
+  //     const response = await fetch(apiUrl, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ username, password }),
+  //     });
+
+  //     if (!response.ok) {
+  //       throw new Error("API Error");
+  //     }
+  //     return true;
+  //   } catch (error) {
+  //     console.log("API Error:", error.message);
+  //     throw new Error("API Error");
+  //   }
+  // };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     const isLoggedIn = await fakeLoginAPI(username, password);
+  //     if (isLoggedIn) {
+  //       setUsername("");
+  //       setPassword("");
+  //       setIsLoggedIn("true");
+  //       navigate("/");
+  //     } else {
+  //       setErr("Incorrect username or password. Please try again.");
+  //     }
+
+  //     console.log("Username:", username);
+  //     console.log("Password:", password);
+  //   } catch (error) {
+  //     console.log("API Error:", error.message);
+  //   }
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 

@@ -18,6 +18,67 @@ const Register = () => {
 
   const navigate = useNavigate();
 
+  // const fakeRegisterAPI = async (userData) => {
+  //   try {
+  //     const apiUrl = "https://example.com/fake-register";
+  //     const response = await fetch(apiUrl, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(userData),
+  //     });
+
+  //     if (!response.ok) {
+  //       throw new Error("API Error");
+  //     }
+
+  //     return true;
+  //   } catch (error) {
+  //     console.log("API Error:", error.message);
+  //     throw new Error("API Error");
+  //   }
+  // };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     const userData = {
+  //       username,
+  //       firstName,
+  //       lastName,
+  //       email,
+  //       phoneNumber,
+  //       password,
+  //       plan,
+  //     };
+
+  //     const isRegistered = await fakeRegisterAPI(userData);
+
+  //     if (isRegistered) {
+  //       localStorage.setItem("user", JSON.stringify(userData));
+  //       console.log(userData);
+
+  //       setUsername("");
+  //       setFirstName("");
+  //       setLastName("");
+  //       setEmail("");
+  //       setPhoneNumber("");
+  //       setPassword("");
+  //       setPlan("");
+
+  //       navigate("/login");
+  //     } els {
+  //       setErr("Registration failed. Please try again.");
+  //     }
+
+  //     console.log(userData);
+  //   } catch (error) {
+  //     console.log("API Error:", error.message);
+  //   }
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -30,6 +91,7 @@ const Register = () => {
         phoneNumber,
         password,
         plan,
+        isEmailVerified: false,
       };
       localStorage.setItem("user", JSON.stringify(userData));
       console.log(userData);
@@ -121,7 +183,11 @@ const Register = () => {
               autoComplete="on"
             />
           </Form.Group>
-          <MainButton classText="mt-3" buttonText="Register" />
+          <MainButton
+            classText="mt-3"
+            buttonText="Register"
+            onClick={handleSubmit}
+          />
         </Form>
       </Container>
     </Container>

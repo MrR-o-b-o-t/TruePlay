@@ -16,9 +16,25 @@ const SubscriptionModal = ({ show, setShow, handleSubscriptionChange }) => {
     setShow(false);
   };
 
-  // const fakeSubscriptionChange = async (selectedPlan) => {
+  // const fakeSubscriptionChange = aync (selectedPlan) => {
   //   try {
-  //     return true;
+  //     const url = "https://trueplay/subscription";
+  //     const body = { plan: selectedPlan };
+
+  //     const response = await fetch(url, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(body),
+  //     });
+
+  //     if (!response.ok) {
+  //       throw new Error("Failed to change subscription.");
+  //     }
+
+  //     const data = await response.json();
+  //     return data.isSubscriptionChanged;
   //   } catch (error) {
   //     console.log("API Error:", error.message);
   //     throw new Error("API Error");
@@ -28,17 +44,23 @@ const SubscriptionModal = ({ show, setShow, handleSubscriptionChange }) => {
   // const handleSubmitSubscriptionChange = async () => {
   //   try {
   //     const isSubscriptionChanged = await fakeSubscriptionChange(selectedPlan);
+
   //     if (isSubscriptionChanged) {
-  //       console.log("Subscription changed successfully!");
+  //       console.log("Subscription changed succesfully!");
   //     } else {
   //       console.log("Error changing subscription.");
   //     }
-  //     console.log("Selected Plan:", selectedPlan);
+  //     handleSubscriptionChange(selectedPlan);
   //     setShow(false);
   //   } catch (error) {
-  //     console.log("API Error:", error.message);
+  //     console.lo("API Error:", error.message);
   //   }
   // };
+
+  const handleCancelMembership = () => {
+    localStorage.clear();
+    window.location.href = "/register";
+  };
 
   return (
     <Modal
@@ -55,16 +77,19 @@ const SubscriptionModal = ({ show, setShow, handleSubscriptionChange }) => {
         <p>Select a new plan:</p>
         <div className="d-flex justify-content-between">
           <Button
-            variant={selectedPlan === "annual" ? "primary" : "outline-primary"}
+            variant={selectedPlan === "Annual" ? "primary" : "outline-primary"}
             onClick={() => setSelectedPlan("Annual")}
           >
             Annual Plan
           </Button>
           <Button
-            variant={selectedPlan === "monthly" ? "primary" : "outline-primary"}
+            variant={selectedPlan === "Monthly" ? "primary" : "outline-primary"}
             onClick={() => setSelectedPlan("Monthly")}
           >
             Monthly Plan
+          </Button>
+          <Button variant="danger" onClick={handleCancelMembership}>
+            Cancel Membership
           </Button>
         </div>
       </Modal.Body>

@@ -13,7 +13,7 @@ import "./ProfilePage.css";
 
 const ProfilePage = () => {
   const [userEmailVerified, setUserEmailVerified] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false); // State to control MainModal
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [show, setShow] = useState(true);
   const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
@@ -31,6 +31,23 @@ const ProfilePage = () => {
 
   const handleCloseAlert = () => {
     setShow(false);
+  };
+
+  const handleVerifyEmail = () => {
+    openModal();
+  };
+
+  const handleEmailVerification = (verificationCode) => {
+    const isCodeValid = verificationCode === "1234";
+
+    if (isCodeValid) {
+      const updatedUserData = { ...userData, isEmailVerified: true };
+      localStorage.setItem("user", JSON.stringify(updatedUserData));
+      setUserEmailVerified(true);
+      setShowModal(false);
+    } else {
+      console.log("Invalid verification code");
+    }
   };
 
   const handleSubscriptionChange = (selectedPlan) => {
@@ -53,9 +70,9 @@ const ProfilePage = () => {
       <h1 className="text-center mb-5 mt-4 settings__title">Settings</h1>
       <Card className="profile__cards rounded">
         <Card.Body>
-          <h3 className="mb-4">Account</h3>
+          <h3 className="mb-4">Account: {userData.username}</h3>
           <Card.Text>
-            {!userEmailVerified && show ? (
+            {!userData.isEmailVerified && show ? (
               <Alert
                 className="email__alert"
                 variant="danger"
@@ -73,13 +90,18 @@ const ProfilePage = () => {
             <div className="d-flex justify-content-between align-items-start">
               <div className="text-muted">
                 {userData.email}{" "}
-                {!userEmailVerified ? (
+                {!userData.isEmailVerified ? (
                   <span className="text-danger">(Not Verified)</span>
                 ) : (
                   <span className="text-success">(Verified)</span>
                 )}
               </div>
-              <MainButton buttonText="Verify Email" onClick={openModal} />
+              {!userData.isEmailVerified && (
+                <MainButton
+                  buttonText="Verify Email"
+                  onClick={handleVerifyEmail}
+                />
+              )}
             </div>
           </Card.Text>
           <Form.Check
@@ -119,11 +141,10 @@ const ProfilePage = () => {
         </Card.Footer>
       </Card>
       <MainModal
-        emailAddress="Sample.email@gmail.com"
         showModal={showModal}
         setShowModal={setShowModal}
         handleCloseAlert={handleCloseAlert}
-        setUserEmailVerified={setUserEmailVerified}
+        handleEmailVerification={handleEmailVerification}
       />
       <SubscriptionModal
         show={showSubscriptionModal}

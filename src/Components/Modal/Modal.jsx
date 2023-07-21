@@ -5,27 +5,8 @@ import Form from "react-bootstrap/Form";
 
 import "./Modal.css";
 
-// const fakeApiCall = async (enteredCode) => {
-//   try {
-//     const response = await axios.post("https://faketrueplay.com/verifyemail", {
-//       code: enteredCode,
-//     });
-
-//     return response.data.success === true;
-//   } catch (error) {
-//     console.log("Error:", error.message);
-//     throw new Error("Error");
-//   }
-// };
-
-const MainModal = ({
-  showModal,
-  setShowModal,
-  handleCloseAlert,
-  setUserEmailVerified,
-}) => {
+const MainModal = ({ showModal, setShowModal, handleEmailVerification }) => {
   const [verificationCode, setVerificationCode] = useState("");
-  const [storedVerificationCode, setStoredVerificatonCode] = useState("1234");
 
   const storedUserEmail = localStorage.getItem("user");
   const userEmail = JSON.parse(storedUserEmail);
@@ -35,34 +16,10 @@ const MainModal = ({
   };
 
   const handleSubmitEmailVerification = () => {
-    if (verificationCode === storedVerificationCode) {
-      console.log("Success");
-      handleCloseAlert(false);
-      handleClose();
-      setUserEmailVerified(true);
-    } else {
-      console.log("Error");
-    }
+    handleEmailVerification(verificationCode);
     setVerificationCode("");
+    handleClose();
   };
-
-  // const handleSubmitEmailVerification = async () => {
-  //   try {
-  //     const isCodeValid = await fakeApiCall(verificationCode);
-
-  //     if (isCodeValid) {
-  //       console.log("Success");
-  //       handleCloseAlert(false);
-  //       handleClose();
-  //       setUserEmailVerified(true);
-  //     } else {
-  //       console.log("Error");
-  //     }
-  //     setVerificationCode("");
-  //   } catch (error) {
-  //     console.log("API Error:", error.message);
-  //   }
-  // };
 
   return (
     <>

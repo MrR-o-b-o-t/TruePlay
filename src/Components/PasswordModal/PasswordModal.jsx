@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 
 import "./PasswordModal.css";
 
-const PasswordModal = ({ show, setShow, handleSubmitChangePassword }) => {
+const PasswordModal = ({ show, setShow }) => {
   const [newPassword, setNewPassword] = useState("");
 
   const handleClose = () => {
