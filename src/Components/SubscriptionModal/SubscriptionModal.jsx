@@ -16,6 +16,30 @@ const SubscriptionModal = ({ show, setShow, handleSubscriptionChange }) => {
     setShow(false);
   };
 
+  // const fakeSubscriptionChange = async (selectedPlan) => {
+  //   try {
+  //     return true;
+  //   } catch (error) {
+  //     console.log("API Error:", error.message);
+  //     throw new Error("API Error");
+  //   }
+  // };
+
+  // const handleSubmitSubscriptionChange = async () => {
+  //   try {
+  //     const isSubscriptionChanged = await fakeSubscriptionChange(selectedPlan);
+  //     if (isSubscriptionChanged) {
+  //       console.log("Subscription changed successfully!");
+  //     } else {
+  //       console.log("Error changing subscription.");
+  //     }
+  //     console.log("Selected Plan:", selectedPlan);
+  //     setShow(false);
+  //   } catch (error) {
+  //     console.log("API Error:", error.message);
+  //   }
+  // };
+
   return (
     <Modal
       className="subscription__modal"

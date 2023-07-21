@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Form, Button, Container, Alert } from "react-bootstrap";
+import { Form, Container, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import MainButton from "../../Components/MainButton/MainButton";
 
 import "./LoginPage.css";
 
-const LoginPage = () => {
+const LoginPage = ({ setIsLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("");
@@ -23,7 +24,7 @@ const LoginPage = () => {
         setUsername("");
         setPassword("");
 
-        localStorage.setItem("isLoggedIn", true);
+        setIsLoggedIn("true");
 
         navigate("/");
       } else {
@@ -36,7 +37,7 @@ const LoginPage = () => {
 
   return (
     <Container>
-      <h1 className="text-center mt-2">Login</h1>
+      <h1 className="login-title text-center mt-4">Login</h1>
       <Container className="login__container p-3 rounded mt-5">
         <Form onSubmit={handleSubmit}>
           {err && <Alert variant="danger">{err}</Alert>}
@@ -56,13 +57,16 @@ const LoginPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              autoComplete="on"
             />
           </Form.Group>
-          <Button className="mt-3 main__btn" variant="primary" type="submit">
-            Login
-          </Button>
+          <MainButton
+            classText="mt-3"
+            buttonText="Login"
+            onClick={handleSubmit}
+          />
           <Link to="/register">
-            <Button className="mt-3 mx-3 main__btn">Register</Button>
+            <MainButton buttonText="Register" classText="mt-3 mx-3" />
           </Link>
         </Form>
       </Container>

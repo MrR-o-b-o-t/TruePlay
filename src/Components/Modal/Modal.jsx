@@ -5,8 +5,20 @@ import Form from "react-bootstrap/Form";
 
 import "./Modal.css";
 
+// const fakeApiCall = async (enteredCode) => {
+//   try {
+//     const response = await axios.post("https://faketrueplay.com/verifyemail", {
+//       code: enteredCode,
+//     });
+
+//     return response.data.success === true;
+//   } catch (error) {
+//     console.log("Error:", error.message);
+//     throw new Error("Error");
+//   }
+// };
+
 const MainModal = ({
-  emailAddress,
   showModal,
   setShowModal,
   handleCloseAlert,
@@ -33,6 +45,24 @@ const MainModal = ({
     }
     setVerificationCode("");
   };
+
+  // const handleSubmitEmailVerification = async () => {
+  //   try {
+  //     const isCodeValid = await fakeApiCall(verificationCode);
+
+  //     if (isCodeValid) {
+  //       console.log("Success");
+  //       handleCloseAlert(false);
+  //       handleClose();
+  //       setUserEmailVerified(true);
+  //     } else {
+  //       console.log("Error");
+  //     }
+  //     setVerificationCode("");
+  //   } catch (error) {
+  //     console.log("API Error:", error.message);
+  //   }
+  // };
 
   return (
     <>

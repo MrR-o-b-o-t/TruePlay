@@ -12,6 +12,30 @@ const PasswordModal = ({ show, setShow, handleSubmitChangePassword }) => {
     setShow(false);
   };
 
+  // const fakePasswordVerification = async (newPassword) => {
+  //   try {
+  //     return true;
+  //   } catch (error) {
+  //     console.log("API Error:", error.message);
+  //     throw new Error("API Error");
+  //   }
+  // };
+
+  // const handleSubmitPasswordChange = async () => {
+  //   try {
+  //     const isPasswordValid = await fakePasswordVerification(newPassword);
+  //     if (isPasswordValid) {
+  //       console.log("Password changed successfully!");
+  //       setShow(false);
+  //     } else {
+  //       console.log("Error changing password.");
+  //     }
+  //     setNewPassword("");
+  //   } catch (error) {
+  //     console.log("API Error:", error.message);
+  //   }
+  // };
+
   const handleSubmitPasswordChange = () => {
     const storedUserData = localStorage.getItem("user");
     const userData = JSON.parse(storedUserData);
@@ -40,7 +64,7 @@ const PasswordModal = ({ show, setShow, handleSubmitChangePassword }) => {
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               placeholder="New Password"
-              autocomplete="on"
+              autoComplete="on"
             />
           </Form.Group>
         </Form>

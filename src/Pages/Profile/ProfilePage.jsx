@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import MainModal from "../../Components/Modal/Modal";
 import PasswordModal from "../../Components/PasswordModal/PasswordModal";
 import SubscriptionModal from "../../Components/SubscriptionModal/SubscriptionModal";
+import MainButton from "../../Components/MainButton/MainButton";
 
 import "./ProfilePage.css";
 
@@ -49,7 +50,7 @@ const ProfilePage = () => {
 
   return (
     <Container>
-      <h1 className="text-center mb-5">Settings</h1>
+      <h1 className="text-center mb-5 mt-4 settings__title">Settings</h1>
       <Card className="profile__cards rounded">
         <Card.Body>
           <h3 className="mb-4">Account</h3>
@@ -70,7 +71,7 @@ const ProfilePage = () => {
           <Card.Title>Email Address</Card.Title>
           <Card.Text>
             <div className="d-flex justify-content-between align-items-start">
-              <div>
+              <div className="text-muted">
                 {userData.email}{" "}
                 {!userEmailVerified ? (
                   <span className="text-danger">(Not Verified)</span>
@@ -78,9 +79,7 @@ const ProfilePage = () => {
                   <span className="text-success">(Verified)</span>
                 )}
               </div>
-              <Button className="main__btn" onClick={openModal}>
-                Verify Email
-              </Button>
+              <MainButton buttonText="Verify Email" onClick={openModal} />
             </div>
           </Card.Text>
           <Form.Check
@@ -95,7 +94,7 @@ const ProfilePage = () => {
             className="text-decoration-none float-right ml-auto"
             onClick={openPasswordModal}
           >
-            Change Password <i className="fas fa-pencil-alt"></i>
+            Change Password <i className="fas fa-pencil-alt px-2"></i>
           </Button>
         </Card.Footer>
       </Card>
@@ -110,7 +109,8 @@ const ProfilePage = () => {
             className="text-decoration-none float-right"
             onClick={() => setShowSubscriptionModal(true)}
           >
-            Manage <i className="fas fa-arrow-right"></i>
+            Manage{" "}
+            <i className="fa fa-chevron-right px-2" aria-hidden="true"></i>
           </Button>
         </Card.Body>
         <Card.Footer>

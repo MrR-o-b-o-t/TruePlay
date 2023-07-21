@@ -1,3 +1,12 @@
 .login__container {
   background-color: #233b67;
 }
+
+.login-title {
+  color: #77cd90;
+  background-image: -webkit-linear-gradient(45deg, #77cd90 28%, #599d9f 56%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}

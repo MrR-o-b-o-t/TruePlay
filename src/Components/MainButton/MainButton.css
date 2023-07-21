@@ -27,3 +27,7 @@
 
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#77CD90", endColorstr="#599D9F", GradientType=1 );
 }
+
+.main__btn .fa-chevron-right {
+  color: white !important;
+}

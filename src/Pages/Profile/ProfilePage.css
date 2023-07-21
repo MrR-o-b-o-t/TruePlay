@@ -58,3 +58,24 @@
 .text-muted {
   color: #5e78a0 !important;
 }
+
+.settings__title {
+  color: #77cd90;
+  background-image: -webkit-linear-gradient(45deg, #77cd90 28%, #599d9f 56%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+.card-footer {
+  border-top: 3px solid rgba(11, 28, 56, 1);
+}
+
+.profile__cards .fa-pencil-alt {
+  color: #65a2d0;
+}
+
+.profile__cards .fa-chevron-right {
+  color: #65a2d0;
+}

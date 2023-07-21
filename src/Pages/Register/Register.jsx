@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Form, Button, Container } from "react-bootstrap";
+import { Form, Container, Alert } from "react-bootstrap";
+import MainButton from "../../Components/MainButton/MainButton";
 
 import "./Register.css";
 
@@ -13,37 +14,44 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [plan, setPlan] = useState("");
 
+  const [err, setErr] = useState("");
+
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const userData = {
-      username,
-      firstName,
-      lastName,
-      email,
-      phoneNumber,
-      password,
-      plan,
-    };
-    localStorage.setItem("user", JSON.stringify(userData));
-    console.log(userData);
+    if ((username, firstName, lastName, email, phoneNumber, password, plan)) {
+      const userData = {
+        username,
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        password,
+        plan,
+      };
+      localStorage.setItem("user", JSON.stringify(userData));
+      console.log(userData);
 
-    setUsername("");
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPhoneNumber("");
-    setPassword("");
-    setPlan("");
+      setUsername("");
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhoneNumber("");
+      setPassword("");
+      setPlan("");
 
-    navigate("/login");
+      navigate("/login");
+    } else {
+      setErr("Please fill out all fields.");
+    }
   };
 
   return (
     <Container>
-      <h2 className="text-center mt-2">Register</h2>
+      {err && <Alert variant="danger">{err}</Alert>}
+      <h2 className="register-title text-center mt-4">Register</h2>
       <Container className="register__container p-3 rounded mt-5">
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="plan">
@@ -110,11 +118,10 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              autoComplete="on"
             />
           </Form.Group>
-          <Button className="mt-3" variant="primary" type="submit">
-            Register
-          </Button>
+          <MainButton classText="mt-3" buttonText="Register" />
         </Form>
       </Container>
     </Container>
