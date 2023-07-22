@@ -63,7 +63,6 @@ const Account = () => {
       setUsername("");
       setEmail("");
       setError("");
-      navigate("/");
     } else {
       setError("Please fill out both fields.");
     }
@@ -94,6 +93,7 @@ const Account = () => {
   //   };
 
   const handleLogout = () => {
+    localStorage.clear();
     navigate("/login");
   };
 
@@ -129,22 +129,17 @@ const Account = () => {
               required
             />
           </Form.Group>
-          <MainButton
-            classText="mt-3"
-            buttonText="Add Account"
-            onClick={handleAddAccount}
-          />
-          <Link to="/">
+          <div className="d-flex justify-content-md-start justify-content-center">
             <MainButton
               classText="mt-3 mx-3"
-              buttonText="Back to Profile"
-              onClick={() => handleUsernameChange(username)}
+              buttonText="Add Account"
+              onClick={handleAddAccount}
             />
-          </Link>
+          </div>
         </Card.Body>
       </Card>
 
-      <div className="account__cards mt-4">
+      <div className="mt-4">
         <h3 className="text-center mt-5 settings__title">User Accounts</h3>
         {userAccounts.map((account, index) => (
           <Card key={index} className="account__card rounded mb-2">
@@ -152,25 +147,29 @@ const Account = () => {
               <p>Username: {account.username}</p>
               <p>Email: {account.email}</p>
               <hr />
-              <Link to="/">
-                <MainButton
-                  classText="mb-3"
-                  variant="primary"
-                  onClick={() => handleUsernameChange(account.username)}
-                  buttonText="Change Account"
-                />
-              </Link>
+              <div className="d-flex justify-content-md-start justify-content-center">
+                <Link to="/">
+                  <MainButton
+                    classText="mb-3 ml-md-3"
+                    variant="primary"
+                    onClick={() => handleUsernameChange(account.username)}
+                    buttonText="Change Account"
+                  />
+                </Link>
+              </div>
             </Card.Body>
           </Card>
         ))}
       </div>
 
-      <div className="d-flex justify-content-center mb-3">
-        <MainButton
-          onClick={handleLogout}
-          buttonText="Logout"
-          classText="m-3"
-        />
+      <div className="d-flex justify-content-md-start justify-content-center mb-3 ">
+        <Link to="/">
+          <MainButton
+            classText="mt-3 mx-3"
+            buttonText="Back to Profile"
+            onClick={() => handleUsernameChange(username)}
+          />
+        </Link>
       </div>
     </Container>
   );

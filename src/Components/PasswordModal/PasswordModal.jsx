@@ -51,6 +51,9 @@ const PasswordModal = ({ show, setShow }) => {
       show={show}
       onHide={handleClose}
       animation={false}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
     >
       <Modal.Header closeButton>
         <Modal.Title id="modal__title">Change Password</Modal.Title>

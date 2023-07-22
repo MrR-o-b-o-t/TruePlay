@@ -1,10 +1,12 @@
 import Modal from "react-bootstrap/Modal";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 
 import "./SubscriptionModal.css";
 
 const SubscriptionModal = ({ show, setShow, handleSubscriptionChange }) => {
+  const navigate = useNavigate();
   const [selectedPlan, setSelectedPlan] = useState("Annual");
 
   const handleClose = () => {
@@ -59,7 +61,7 @@ const SubscriptionModal = ({ show, setShow, handleSubscriptionChange }) => {
 
   const handleCancelMembership = () => {
     localStorage.clear();
-    window.location.href = "/register";
+    navigate("/register");
   };
 
   return (
@@ -68,6 +70,9 @@ const SubscriptionModal = ({ show, setShow, handleSubscriptionChange }) => {
       show={show}
       onHide={handleClose}
       animation={false}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
     >
       <Modal.Header closeButton>
         <Modal.Title id="modal__title">Change Subscription</Modal.Title>
@@ -77,18 +82,24 @@ const SubscriptionModal = ({ show, setShow, handleSubscriptionChange }) => {
         <p>Select a new plan:</p>
         <div className="d-flex justify-content-between">
           <Button
+            className="m-2"
             variant={selectedPlan === "Annual" ? "primary" : "outline-primary"}
             onClick={() => setSelectedPlan("Annual")}
           >
             Annual Plan
           </Button>
           <Button
+            className="m-2"
             variant={selectedPlan === "Monthly" ? "primary" : "outline-primary"}
             onClick={() => setSelectedPlan("Monthly")}
           >
             Monthly Plan
           </Button>
-          <Button variant="danger" onClick={handleCancelMembership}>
+          <Button
+            className="m-2"
+            variant="danger"
+            onClick={handleCancelMembership}
+          >
             Cancel Membership
           </Button>
         </div>

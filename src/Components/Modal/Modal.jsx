@@ -28,6 +28,9 @@ const MainModal = ({ showModal, setShowModal, handleEmailVerification }) => {
         show={showModal}
         onHide={handleClose}
         animation={false}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
       >
         <Modal.Header closeButton>
           <Modal.Title id="modal__title">Verify</Modal.Title>
