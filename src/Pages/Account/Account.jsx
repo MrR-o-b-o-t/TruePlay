@@ -162,15 +162,15 @@ const Account = () => {
         ))}
       </div>
 
-      <div className="d-flex justify-content-md-start justify-content-center mb-3 ">
+      {/* <div className="d-flex justify-content-md-start justify-content-center mb-3 ">
         <Link to="/">
           <MainButton
-            classText="mt-3 mx-3"
+            classText="mt-3"
             buttonText="Back to Profile"
             onClick={() => handleUsernameChange(username)}
           />
         </Link>
-      </div>
+      </div> */}
     </Container>
   );
 };

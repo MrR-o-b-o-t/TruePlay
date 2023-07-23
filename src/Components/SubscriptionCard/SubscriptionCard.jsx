@@ -1,6 +1,8 @@
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
+import "./SubscriptionCard.css";
+
 const SubscriptionCard = ({ userData, setShowSubscriptionModal }) => {
   return (
     <Card className="profile__cards rounded mt-3 mb-4">
@@ -14,7 +16,7 @@ const SubscriptionCard = ({ userData, setShowSubscriptionModal }) => {
             </div>
             <Button
               variant="link"
-              className="text-decoration-none"
+              className="text-decoration-none custom-link-button"
               onClick={() => setShowSubscriptionModal(true)}
             >
               Manage{" "}

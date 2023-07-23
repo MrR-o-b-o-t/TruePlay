@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Form, Container, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { Form, Container, Alert } from "react-bootstrap";
 import MainButton from "../../Components/MainButton/MainButton";
 
 import "./LoginPage.css";
@@ -10,7 +10,6 @@ const LoginPage = ({ setIsLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("");
-
   const navigate = useNavigate();
 
   // const fakeLoginAPI = async (username, password) => {
@@ -65,9 +64,7 @@ const LoginPage = ({ setIsLoggedIn }) => {
       if (username === userData.username && password === userData.password) {
         setUsername("");
         setPassword("");
-
         setIsLoggedIn("true");
-
         navigate("/");
       } else {
         setErr("Incorrect username or password. Please try again.");

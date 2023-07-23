@@ -1,8 +1,8 @@
+// App.jsx
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-// Pages
 import ProfilePage from "./Pages/Profile/ProfilePage.jsx";
 import LoginPage from "./Pages/Login/LoginPage.jsx";
 import Register from "./Pages/Register/Register.jsx";
@@ -12,16 +12,12 @@ import Navigation from "./Components/Nav/Navigation";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(
-    localStorage.getItem("isLoggedIn" === "true")
+    localStorage.getItem("isLoggedIn") === "true" ? true : false
   );
-
-  useEffect(() => {
-    localStorage.setItem("isLoggedIn", isLoggedIn);
-  }, [isLoggedIn]);
 
   return (
     <>
-      <Navigation />
+      <Navigation isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <div className="App">
         <Routes>
           <Route
@@ -33,7 +29,7 @@ function App() {
             }
           />
           <Route
-            path="account"
+            path="/account"
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>
                 <Account />
@@ -41,10 +37,10 @@ function App() {
             }
           />
           <Route
-            path="login"
+            path="/login"
             element={<LoginPage setIsLoggedIn={setIsLoggedIn} />}
           />
-          <Route path="register" element={<Register />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </div>
     </>

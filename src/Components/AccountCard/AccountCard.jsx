@@ -63,7 +63,7 @@ const AccountCard = ({
         </div>
         <Button
           variant="link"
-          className="text-decoration-none float-right ml-auto"
+          className="text-decoration-none float-right ml-auto custom-link-button"
           onClick={openPasswordModal}
         >
           Change Password <i className="fas fa-pencil-alt px-1"></i>

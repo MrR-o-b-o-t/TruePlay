@@ -1,5 +1,7 @@
 import { Alert } from "react-bootstrap";
 
+import "./EmailVerificationAlert.css";
+
 const EmailVerificationAlert = ({ handleCloseAlert }) => {
   return (
     <Alert
@@ -8,7 +10,8 @@ const EmailVerificationAlert = ({ handleCloseAlert }) => {
       onClose={handleCloseAlert}
       dismissible
     >
-      Your email has not been verified
+      <strong>Your email has not been verified</strong>.
+      {` In order to receive important notifications and information about your account please select "Verify Email" button bellow.`}
     </Alert>
   );
 };
