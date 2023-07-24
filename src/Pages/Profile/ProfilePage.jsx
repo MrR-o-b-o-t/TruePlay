@@ -66,7 +66,7 @@ const ProfilePage = () => {
   }
 
   return (
-    <Container>
+    <Container className="mb-5">
       <h1 className="text-center mb-5 mt-4 settings__title">Settings</h1>
 
       <AccountCard

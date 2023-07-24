@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container, Form, Card, Alert } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import MainButton from "../../Components/MainButton/MainButton";
 
@@ -44,7 +44,6 @@ const Account = () => {
   const [userAccounts, setUserAccounts] = useState(userData.accounts);
 
   const [error, setError] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
     const updatedUserData = { ...userData, accounts: userAccounts };
@@ -92,11 +91,6 @@ const Account = () => {
   //     }
   //   };
 
-  const handleLogout = () => {
-    localStorage.clear();
-    navigate("/login");
-  };
-
   const handleUsernameChange = (newUsername) => {
     const updatedUserData = { ...userData, username: newUsername };
     localStorage.setItem("user", JSON.stringify(updatedUserData));
@@ -132,14 +126,14 @@ const Account = () => {
           <div className="d-flex justify-content-md-start justify-content-center">
             <MainButton
               classText="mt-3 mx-3"
-              buttonText="Add Account"
+              buttonText="Add New User"
               onClick={handleAddAccount}
             />
           </div>
         </Card.Body>
       </Card>
 
-      <div className="mt-4">
+      <div className="mt-4 mb-5">
         <h3 className="text-center mt-5 settings__title">User Accounts</h3>
         {userAccounts.map((account, index) => (
           <Card key={index} className="account__card rounded mb-2">
@@ -151,7 +145,6 @@ const Account = () => {
                 <Link to="/">
                   <MainButton
                     classText="mb-3 ml-md-3"
-                    variant="primary"
                     onClick={() => handleUsernameChange(account.username)}
                     buttonText="Change Account"
                   />
@@ -161,16 +154,6 @@ const Account = () => {
           </Card>
         ))}
       </div>
-
-      {/* <div className="d-flex justify-content-md-start justify-content-center mb-3 ">
-        <Link to="/">
-          <MainButton
-            classText="mt-3"
-            buttonText="Back to Profile"
-            onClick={() => handleUsernameChange(username)}
-          />
-        </Link>
-      </div> */}
     </Container>
   );
 };

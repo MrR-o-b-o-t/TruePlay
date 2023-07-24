@@ -2,7 +2,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ProfilePage from "./Pages/Profile/ProfilePage.jsx";
 import LoginPage from "./Pages/Login/LoginPage.jsx";
 import Register from "./Pages/Register/Register.jsx";

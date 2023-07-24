@@ -7,7 +7,7 @@ const SubscriptionCard = ({ userData, setShowSubscriptionModal }) => {
   return (
     <Card className="profile__cards rounded mt-3 mb-4">
       <Card.Body>
-        <h3 className="mb-3">Subscriptions</h3>
+        <h3 className="mb-5">Subscriptions</h3>
         <div className="d-flex flex-column">
           <div className="d-flex justify-content-between">
             <div>
