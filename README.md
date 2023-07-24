@@ -12,7 +12,8 @@ Clone the repository:
 - npm install
 - The application will be available at http://localhost:3000/.
 
-You can view the deployed application here: [TruePlay App](https://harmonious-bunny-bd696e.netlify.app)
+You can view the deployed application here: 
+## TruePlay App: https://harmonious-bunny-bd696e.netlify.app
 
 **The code for faux email verification is 1234**
 
