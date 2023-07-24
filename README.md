@@ -2,7 +2,7 @@
 
 TruePlay is a web application designed to provide users with a platform to register, log in, view their account settings, and perform various account-related actions.
 
-##Getting Started
+## Getting Started
 To get started with TruePlay, follow these steps:
 
 Clone the repository:
