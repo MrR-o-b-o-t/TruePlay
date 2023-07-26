@@ -32,4 +32,4 @@ Once the TruePlay application is up and running, you can perform the following a
 - React Bootstrap - Front-end framework for building responsive websites
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License
